@@ -43,10 +43,13 @@ public class ResultFragment extends Fragment {
         resultMessage = view.findViewById(R.id.result_message_tv);
 
         Dice dice = mainActivity.dice;
+        dice.passedGuess = guessNumber;
         dice.rollDice(img1,img2);
-
-        int num1=0, num2=0;
-
+        if(dice.correctGuess){
+            resultMessage.setText("Your guess is CORRECT");
+        }else{
+            resultMessage.setText("Your guess is WRONG");
+        }
         mainActivity.creditsTv.setText(dice.getRemainingCredits()+"");
         return view;
     }

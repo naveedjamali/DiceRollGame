@@ -8,6 +8,9 @@ class Dice {
 
     int credits = 20;
 
+    int passedGuess = 0;
+    boolean correctGuess = false;
+
     void rollDice(ImageView img1, ImageView img2) {
 
         Random random = new Random();
@@ -21,7 +24,14 @@ class Dice {
         while (dice2Result < 1) {
             dice2Result = random.nextInt() % 7;
         }
+        if(dice1Result+dice2Result==passedGuess){
+            correctGuess = true;
+            addCredits(5);
+        }else{
+            correctGuess = false;
+            deduct(5);
 
+        }
         int img1ResourceId = 0;
         switch (dice1Result) {
             case 1:
